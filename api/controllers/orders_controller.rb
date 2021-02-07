@@ -3,13 +3,19 @@
 module Controllers
   class Orders
     class << self
-      def index(_request)
-        msg = { status: 'render all orders' }
-        _request.success msg
-      end
-
       def parsing_order(_request)
-        require 'pry'; binding.pry
+        params = JSON.parse(_request.params.to_json, symbolize_names: true)
+        result = OrderParsingDataOperation.call(params: params)
+
+        if result.success?
+          render json: {
+            result: 'success',
+          }, status: 201
+        else
+          render json: {
+            result: 'failed',
+          }, status: 422
+        end
       end
     end
   end

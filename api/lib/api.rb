@@ -34,7 +34,13 @@ Dir["#{Dir.pwd}/models/**/*.rb"].sort.each { |file| require file }
 Dir["#{Dir.pwd}/controllers/**/*.rb"].sort.each { |file| require file }
 
 # Load api contracts
-Dir["#{Dir.pwd}/contracts/**/*.rb"].sort.each { |file| require file }
+Dir["#{Dir.pwd}/lib/contracts/**/*.rb"].sort.each { |file| require file }
+
+# Load api parsers
+Dir["#{Dir.pwd}/lib/parsers/**/*.rb"].sort.each { |file| require file }
+
+# Load api operations
+Dir["#{Dir.pwd}/lib/operations/**/*.rb"].sort.each { |file| require file }
 
 APP_NAME = ENV.fetch('APP_NAME', 'delivery-center-integration')
 RUBY_ENV = ENV.fetch('RUBY_ENV', 'development').downcase
