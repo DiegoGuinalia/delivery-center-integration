@@ -9,6 +9,7 @@ require 'redis'
 require 'sidekiq'
 require 'mongoid'
 require 'dry-validation'
+require 'interactor'
 
 # database
 Mongoid.load!(File.join(Dir.pwd, 'config', 'mongoid.yml'))

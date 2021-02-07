@@ -9,6 +9,7 @@ source 'http://rubygems.org' do
   gem 'sidekiq'
   gem 'mongoid'
   gem 'dry-validation'
+  gem "interactor", "~> 3.0"
 
   group :development do
     gem 'pry-nav'
