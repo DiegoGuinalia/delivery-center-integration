@@ -1,4 +1,4 @@
-class CustomerParse
+class CustomerParser
   def initialize(params)
     @params = params[:buyer]
   end

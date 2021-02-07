@@ -4,6 +4,7 @@ class OrderDataContract < Dry::Validation::Contract
     required(:store_id).value(:integer)
     required(:total_amount).value(:float)
     required(:total_shipping).value(:float)
+    required(:date_created).value(:date_time)
 
     required(:shipping).hash do
       required(:receiver_address).hash do
@@ -66,6 +67,6 @@ class OrderDataContract < Dry::Validation::Contract
   end
 
   rule("shipping.receiver_address.state.name") do
-    key.failure('state invalid') unless AddressParse::STATE_OPTIONS.include? :"#{value}"
+    key.failure('state invalid') unless AddressParser::STATE_OPTIONS.include? :"#{value}"
   end
 end

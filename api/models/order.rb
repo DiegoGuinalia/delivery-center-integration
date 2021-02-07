@@ -12,4 +12,5 @@ class Order
   field :delivery_fee, type: Float
   field :total_shipping, type: Float
   field :total, type: Float
+  field :external_code, type: BigDecimal
 end

@@ -1,4 +1,4 @@
-class AddressParse
+class AddressParser
   STATE_OPTIONS = {
     "Acre": "AC",
     "Alagoas": "AL",
@@ -36,14 +36,14 @@ class AddressParse
   def parse_address
     {
       country: @params[:country][:id],
-      state: AddressParse::STATE_OPTIONS[:"#{@params[:state][:name]}"],
+      state: AddressParser::STATE_OPTIONS[:"#{@params[:state][:name]}"],
       city: @params[:city][:name],
       district: @params[:neighborhood][:name],
       street: @params[:street_name],
       complement: @params[:comment],
       latitude: @params[:latitude],
       longitude:  @params[:longitude],
-      postalCode: @params[:zip_code],
+      postal_code: @params[:zip_code],
       number: @params[:street_number]
     }
   end

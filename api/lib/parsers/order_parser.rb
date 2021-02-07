@@ -1,4 +1,4 @@
-class OrderParse
+class OrderParser
   def initialize(params)
     @params = params
   end
@@ -11,7 +11,7 @@ class OrderParse
       delivery_fee: @params[:total_shipping],
       total_shipping: @params[:total_shipping],
       total: @params[:total_amount_with_shipping],
-      dtOrderCreate: "2019-06-27T19:59:08.251Z"
+      created_at: @params[:date_created]
     }
   end
 end

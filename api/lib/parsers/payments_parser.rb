@@ -1,4 +1,4 @@
-class PaymentsParse
+class PaymentsParser
   def initialize(params)
     @payments = params[:payments]
   end

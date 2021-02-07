@@ -5,6 +5,7 @@ class Address
   belongs_to :order
 
   field :country, type: String
+  field :state, type: String
   field :city, type: String
   field :district, type: String
   field :street, type: String

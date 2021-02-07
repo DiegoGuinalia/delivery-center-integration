@@ -1,4 +1,4 @@
-class ItemsParse
+class ItemsParser
   def initialize(params)
     @order_items = params[:order_items]
   end
