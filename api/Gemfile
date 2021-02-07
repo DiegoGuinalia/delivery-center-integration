@@ -10,6 +10,7 @@ source 'http://rubygems.org' do
   gem 'mongoid'
   gem 'dry-validation'
   gem "interactor", "~> 3.0"
+  gem "awrence"
 
   group :development do
     gem 'pry-nav'
