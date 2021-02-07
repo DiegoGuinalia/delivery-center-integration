@@ -4,5 +4,5 @@ class Item
 
   field :name, type: String
   field :price, type: Float
-  field :external_code, type: BigDecimal
+  field :external_code, type: String
 end
