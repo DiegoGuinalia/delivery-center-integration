@@ -1,0 +1,23 @@
+Preciso de uma rota - FEITO
+
+Preciso de um controller - FEITO
+
+Instalar o banco de dados mongodb FEITO
+
+Criar uma model Orders seguindo o esquema do payload processamento FEITO
+
+Instalar o dry validation
+
+Instalar o interactor para fazer as operations
+
+Instalar o sidekiq
+
+Criar Service para fazer a requisição
+
+Criar uma operation que usa dry o validation para poder validar as informações que chegaram, salvar no nosso banco de dados e encaminhar para api delivery-center utilizando sidekiq
+
+instalar o rspec para escrever os seguintes testes
+    Teste do worker para requisição assincrona na delivery center api
+    Teste de operation
+    Teste de model orders
+    Teste de endpoint orders method POST

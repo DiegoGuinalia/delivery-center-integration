@@ -1,0 +1,13 @@
+development:
+  clients:
+    default:
+      database: delivery_center_integration_development
+      hosts: 
+        - mongodb
+
+test:
+  clients:
+    default:
+      database: delivery_center_integration_test
+      hosts: 
+        - mongodb

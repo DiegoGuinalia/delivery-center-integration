@@ -1,0 +1,60 @@
+version: '3.6'
+
+x-shared:
+  common: &common
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/workspace
+      - gems:/gems
+    networks:
+      delivery-center-integration-net:
+
+services:
+  api:
+    <<: *common
+    build: .docker/api
+    ports: 
+      - 9292:9292
+    environment:
+      REDIS_HOST: 'redis://redis'
+      APP_NAME: 'delivery-center-integration'
+    depends_on:
+      - redis
+      - api-sidekiq
+
+  api-sidekiq:
+    <<: *common
+    build: .docker/api
+    ports: 
+      - 9293:9292
+    environment:
+      REDIS_HOST: 'redis://redis'
+      APP_NAME: 'api-sidekiq'
+    depends_on:
+      - redis
+    command: bundle exec sidekiq -C config/sidekiq.yml
+  
+  redis:
+    image: redis:6
+    networks:
+      delivery-center-integration-net:
+  
+  mongodb:
+    image: mongo
+    volumes:
+      - /data/db
+    networks:
+      delivery-center-integration-net:
+
+networks:
+  delivery-center-integration-net:
+    ipam:
+        driver: default
+        config:
+          - subnet: 10.5.0.0/16
+
+volumes:
+  gems:
+  postgres-data:
+

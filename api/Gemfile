@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+source 'http://rubygems.org' do
+  gem 'bunny'
+  gem 'falcon'
+  gem 'puma', '~> 4.0'
+  gem 'redis'
+  gem 'roda', '~> 3.38'
+  gem 'sidekiq'
+  gem 'mongoid'
+  gem 'dry-validation'
+
+  group :development do
+    gem 'pry-nav'
+    gem 'rack-test'
+    gem 'rspec'
+    gem 'rubocop-performance'
+    gem 'rubocop-rspec'
+    gem 'simplecov', require: false
+    gem 'webmock'
+  end
+end
