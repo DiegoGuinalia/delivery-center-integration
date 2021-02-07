@@ -1,4 +1,4 @@
-class OrderContract < Dry::Validation::Contract
+class OrderDataContract < Dry::Validation::Contract
   params do
     required(:email).value(:string)
     required(:externalCode).value(:string)
