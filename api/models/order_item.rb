@@ -5,6 +5,6 @@ class OrderItem
   belongs_to :order
   belongs_to :item
 
-  field :quantity, type: String
+  field :quantity, type: Integer
   field :total, type: Float
 end
