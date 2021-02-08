@@ -8,5 +8,3 @@ class DeliveryCenterService
     Faraday.post(@uri, payload, @headers)
   end
 end
-
-

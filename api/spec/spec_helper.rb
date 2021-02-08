@@ -5,6 +5,8 @@ require 'rack/test'
 require 'factory_bot'
 require 'mongoid-rspec'
 
+# Load support
+Dir["#{Dir.pwd}/spec/support/**/*.rb"].sort.each { |file| require file }
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
