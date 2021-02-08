@@ -14,7 +14,7 @@ class OrderParsingDataOperation
     contract = OrderDataContract.new
     result = contract.call(params)
 
-    context.fail!(result.errors.to_h) unless result.success?
+    context.fail!(error: result.errors.to_h) unless result.success?
   end
 
   def parse_data

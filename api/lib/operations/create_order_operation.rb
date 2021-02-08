@@ -4,11 +4,13 @@ class CreateOrderOperation
   delegate :params, to: :context
 
   def call
-    create_customer
-    create_order
-    create_address
-    create_items
-    create_payments
+    if Order.where(external_code: context.order_data[:external_code]).count == 0
+      create_customer
+      create_order
+      create_address
+      create_items
+      create_payments
+    end
   end
 
   private
@@ -24,6 +26,9 @@ class CreateOrderOperation
   end
 
   def create_order
+    context.order_data[:created_at] = context.order_data[:dtOrderCreate]
+    context.order_data.delete(:dtOrderCreate)
+
     order = Order.where(external_code: context.order_data[:external_code]).first
     if order.nil?
       context.order = context.customer.orders.build(context.order_data)

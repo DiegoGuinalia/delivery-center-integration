@@ -8,7 +8,7 @@ module Controllers
         result = PlaceOrder.call(params: params)
 
         if result.success?
-          body = { status: 'online' }
+          body = { result: 'success' }
           _request.success body
         else
           body = { result: 'failed' }

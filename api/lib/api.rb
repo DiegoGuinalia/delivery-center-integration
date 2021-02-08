@@ -10,6 +10,8 @@ require 'sidekiq'
 require 'mongoid'
 require 'dry-validation'
 require 'interactor'
+require 'awrence'
+require 'faraday'
 
 # database
 Mongoid.load!(File.join(Dir.pwd, 'config', 'mongoid.yml'))
@@ -41,6 +43,9 @@ Dir["#{Dir.pwd}/lib/parsers/**/*.rb"].sort.each { |file| require file }
 
 # Load api operations
 Dir["#{Dir.pwd}/lib/operations/**/*.rb"].sort.each { |file| require file }
+
+# Load api services
+Dir["#{Dir.pwd}/lib/services/**/*.rb"].sort.each { |file| require file }
 
 APP_NAME = ENV.fetch('APP_NAME', 'delivery-center-integration')
 RUBY_ENV = ENV.fetch('RUBY_ENV', 'development').downcase

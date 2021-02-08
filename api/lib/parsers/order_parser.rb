@@ -11,7 +11,7 @@ class OrderParser
       delivery_fee: @params[:total_shipping],
       total_shipping: @params[:total_shipping],
       total: @params[:total_amount_with_shipping],
-      created_at: @params[:date_created]
+      dtOrderCreate: @params[:date_created]
     }
   end
 end
