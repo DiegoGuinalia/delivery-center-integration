@@ -20,6 +20,7 @@ source 'http://rubygems.org' do
   end
 
   group :test do
+    gem 'vcr'
     gem 'factory_bot'
     gem 'mongoid-rspec'
   end

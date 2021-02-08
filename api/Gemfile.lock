@@ -190,6 +190,7 @@ GEM
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     unicode-display_width (2.0.0)
+    vcr (6.0.0)
     webmock (3.11.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -215,6 +216,7 @@ DEPENDENCIES
   rspec!
   rubocop-performance!
   rubocop-rspec!
+  vcr!
   webmock!
 
 BUNDLED WITH

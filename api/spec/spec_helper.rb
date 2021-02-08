@@ -4,6 +4,7 @@ require './lib/api'
 require 'rack/test'
 require 'factory_bot'
 require 'mongoid-rspec'
+require 'vcr'
 
 # Load support
 Dir["#{Dir.pwd}/spec/support/**/*.rb"].sort.each { |file| require file }
@@ -20,3 +21,7 @@ RSpec.configure do |config|
   end
 end
 
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/vcr_cassettes"
+  config.hook_into :webmock
+end
