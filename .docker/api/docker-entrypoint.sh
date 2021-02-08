@@ -2,13 +2,7 @@
 
 set -ex
 
-cd /workspace
-
-if [ ! -e api ]; then
-  git clone --recursive https://gitlab.com/vini.freire.oliveira/micro-api.git
-fi
-
-cd api
+cd /workspace/api
 
 unset BUNDLE_APP_CONFIG
 

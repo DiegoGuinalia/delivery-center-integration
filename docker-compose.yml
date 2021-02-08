@@ -19,13 +19,6 @@ services:
     environment:
       REDIS_HOST: 'redis://redis'
       APP_NAME: 'delivery-center-integration'
-    depends_on:
-      - redis
-  
-  redis:
-    image: redis:6
-    networks:
-      delivery-center-integration-net:
   
   mongodb:
     image: mongo

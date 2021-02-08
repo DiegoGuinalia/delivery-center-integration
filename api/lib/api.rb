@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 require 'erb'
-require 'forwardable'
 require 'json'
 require 'roda'
-require 'bunny'
-require 'redis'
 require 'mongoid'
 require 'dry-validation'
 require 'interactor'
