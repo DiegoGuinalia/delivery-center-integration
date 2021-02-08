@@ -10,10 +10,6 @@ fi
 
 cd api
 
-if [ ! -e config/sidekiq.yml ]; then
-  ln -s ../../.docker/api/config/sidekiq.yml config/sidekiq.yml
-fi
-
 unset BUNDLE_APP_CONFIG
 
 bundle config set path '/gems'
