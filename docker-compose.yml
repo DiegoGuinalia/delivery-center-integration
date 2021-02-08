@@ -21,19 +21,6 @@ services:
       APP_NAME: 'delivery-center-integration'
     depends_on:
       - redis
-      - api-sidekiq
-
-  api-sidekiq:
-    <<: *common
-    build: .docker/api
-    ports: 
-      - 9293:9292
-    environment:
-      REDIS_HOST: 'redis://redis'
-      APP_NAME: 'api-sidekiq'
-    depends_on:
-      - redis
-    command: bundle exec sidekiq -C config/sidekiq.yml
   
   redis:
     image: redis:6
@@ -56,5 +43,4 @@ networks:
 
 volumes:
   gems:
-  postgres-data:
 
