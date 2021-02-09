@@ -4,7 +4,7 @@ module Controllers
   class Orders
     class << self
       def parsing_order(_request)
-        params = JSON.parse(_request.params.to_json, symbolize_names: true)
+        params = _request.params
         result = PlaceOrder.call(params: params)
 
         if result.success?

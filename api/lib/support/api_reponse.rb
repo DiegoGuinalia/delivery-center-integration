@@ -8,11 +8,17 @@ module Support
     end
 
     def params
-      JSON.parse(@r.body.read).symbolize_keys!
+      body = @r.body.read
+      return if body.empty?
+      JSON.parse(body, symbolize_names: true)
     end
 
     def success(_body)
-      @r.halt 200
+      @r.halt 200, _body
+    end
+
+    def unprocessable_entity(_body)
+      @r.halt 422, _body
     end
 
     def created(msg)
@@ -21,10 +27,6 @@ module Support
 
     def accepted(msg)
       @r.halt 202, { message: msg }
-    end
-
-    def failure(msg)
-      @r.halt 202, { error: msg }
     end
 
     def no_content
@@ -41,10 +43,6 @@ module Support
 
     def found
       @r.halt 302, { message: 'found' }
-    end
-
-    def unprocessable_entity
-      @r.halt 422, { message: 'Unprocessable Entity' }
     end
 
     def not_found
