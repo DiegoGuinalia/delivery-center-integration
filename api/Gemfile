@@ -23,5 +23,6 @@ source 'http://rubygems.org' do
     gem 'vcr'
     gem 'factory_bot'
     gem 'mongoid-rspec'
+    gem 'database_cleaner-mongoid'
   end
 end
