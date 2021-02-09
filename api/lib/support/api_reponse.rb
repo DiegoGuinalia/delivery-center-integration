@@ -10,15 +10,16 @@ module Support
     def params
       body = @r.body.read
       return if body.empty?
+
       JSON.parse(body, symbolize_names: true)
     end
 
-    def success(_body)
-      @r.halt 200, _body
+    def success(body)
+      @r.halt 200, body
     end
 
-    def unprocessable_entity(_body)
-      @r.halt 422, _body
+    def unprocessable_entity(body)
+      @r.halt 422, body
     end
 
     def created(msg)
