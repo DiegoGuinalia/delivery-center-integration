@@ -5,11 +5,11 @@ RSpec.describe IntegrationOrderOperation do
   let(:result) { operation.call(data) }
   let(:data) {
     {
-      customer_data: customer,
-      order_data: order,
-      address_data: address,
-      items_data: items,
-      payments_data: payments
+      customer_data: PlaceOrderHelper.customer(payload),
+      order_data: PlaceOrderHelper.order(payload),
+      address_data: PlaceOrderHelper.address(payload),
+      items_data: PlaceOrderHelper.items(payload),
+      payments_data: PlaceOrderHelper.payments(payload)
     }
   }
 
@@ -35,25 +35,5 @@ RSpec.describe IntegrationOrderOperation do
 
       it { expect(result.error).not_to be nil }
     end
-  end
-
-  def customer
-    payload.slice(:customer)[:customer]
-  end
-
-  def order
-    payload.slice(:externalCode, :storeId, :subTotal, :deliveryFee, :total_shipping, :total, :dtOrderCreate)
-  end
-
-  def address
-    payload.slice(:country, :state, :city, :district, :street, :complement, :latitude, :longitude, :postalCode, :number)
-  end
-
-  def items
-    payload.slice(:items)[:items]
-  end
-
-  def payments
-    payload.slice(:payments)[:payments]
   end
 end
