@@ -14,28 +14,26 @@ RSpec.describe IntegrationOrderOperation do
   }
 
   describe 'integration with delivery center api' do
-    context 'when success' do
-      let!(:payload) { JSON.parse(SpecSupport.load_payload('payload_order_parse.json').to_json, symbolize_names: true) }
-
-      around(:each) do |example|
-        VCR.use_cassette('create_order') do
-          example.run
-        end
+    around(:each) do |example|
+      VCR.use_cassette(cassette) do
+        example.run
       end
+    end
+
+    context 'when success' do
+      let!(:payload) { JSON.parse(SpecSupport.load_payload('payload_order_parse.json'), symbolize_names: true) }
+      let(:cassette) { 'create_order' }
 
       it { expect(result.success?).to be true }
     end
 
     context 'when failure' do
-      let!(:payload) { JSON.parse(SpecSupport.load_payload('payload_order_parse_invalid.json').to_json, symbolize_names: true) }
-
-      around(:each) do |example|
-        VCR.use_cassette('create_order_invalid') do
-          example.run
-        end
-      end
+      let!(:payload) { JSON.parse(SpecSupport.load_payload('payload_order_parse_invalid.json'), symbolize_names: true) }
+      let(:cassette) { 'create_order_invalid' }
 
       it { expect(result.success?).to be false }
+
+      it { expect(result.error).not_to be nil }
     end
   end
 

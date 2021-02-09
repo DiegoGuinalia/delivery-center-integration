@@ -17,8 +17,9 @@ services:
     ports: 
       - 9292:9292
     environment:
-      REDIS_HOST: 'redis://redis'
       APP_NAME: 'delivery-center-integration'
+    depends_on:
+      - mongodb
   
   mongodb:
     image: mongo

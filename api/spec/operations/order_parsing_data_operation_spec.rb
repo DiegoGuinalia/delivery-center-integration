@@ -6,43 +6,27 @@ RSpec.describe OrderParsingDataOperation do
 
   describe 'parse data' do
     context 'when success' do
-      let(:payload) { JSON.parse(SpecSupport.load_payload('payload.json').to_json, symbolize_names: true) }
+      let(:payload) { JSON.parse(SpecSupport.load_payload('payload_valid.json'), symbolize_names: true) }
 
-      it 'return result true' do
-        expect(result.success?).to be true
-      end
+      it { expect(result.success?).to be true }
 
-      it 'return customer_data' do
-        expect(result.customer_data).to eq(customer)
-      end
+      it { expect(result.customer_data).to eq(customer) }
 
-      it 'return order_data' do
-        expect(result.order_data).to eq(order)
-      end
+      it { expect(result.order_data).to eq(order) }
 
-      it 'return address_data' do
-        expect(result.address_data).to eq(address)
-      end
+      it { expect(result.address_data).to eq(address) }
 
-      it 'return items_data' do
-        expect(result.items_data).to eq(items)
-      end
+      it { expect(result.items_data).to eq(items) }
 
-      it 'return payments_data' do
-        expect(result.payments_data).to eq(payments)
-      end
+      it { expect(result.payments_data).to eq(payments) }
     end
 
     context 'when failed' do
       let(:payload) { nil }
 
-      it 'return result false' do
-        expect(result.success?).to be false
-      end
+      it { expect(result.success?).to be false }
 
-      it 'return errors' do
-        expect(result.error).not_to be nil
-      end
+      it { expect(result.error).not_to be nil }
     end
   end
 
