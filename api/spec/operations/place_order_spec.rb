@@ -20,14 +20,14 @@ RSpec.describe PlaceOrder do
       let(:payload) { JSON.parse(SpecSupport.load_payload('payload_valid.json'), symbolize_names: true) }
       let(:cassette) { 'create_order' }
 
-      it{ expect(result.success?).to be true }
+      it { expect(result.success?).to be true }
     end
 
     context 'when failure' do
       let(:payload) { JSON.parse(SpecSupport.load_payload('payload_invalid.json'), symbolize_names: true) }
       let(:cassette) { 'create_order_invalid' }
 
-      it{ expect(result.success?).to be false }
+      it { expect(result.success?).to be false }
 
       it { expect(result.error).not_to be nil }
     end

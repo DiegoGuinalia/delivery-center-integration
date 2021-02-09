@@ -60,13 +60,11 @@ class OrderDataContract < Dry::Validation::Contract
     end
   end
 
-  rule("buyer.email") do
-    unless /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.match?(value)
-      key.failure('email invalid format')
-    end
+  rule('buyer.email') do
+    key.failure('email invalid format') unless /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.match?(value)
   end
 
-  rule("shipping.receiver_address.state.name") do
+  rule('shipping.receiver_address.state.name') do
     key.failure('state invalid') unless AddressParser::STATE_OPTIONS.include? :"#{value}"
   end
 end

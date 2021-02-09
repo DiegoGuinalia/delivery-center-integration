@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe IntegrationOrderOperation do
   let(:operation) { described_class }
   let(:result) { operation.call(data) }
-  let(:data) {
+  let(:data) do
     {
       customer_data: PlaceOrderHelper.customer(payload),
       order_data: PlaceOrderHelper.order(payload),
@@ -11,7 +11,7 @@ RSpec.describe IntegrationOrderOperation do
       items_data: PlaceOrderHelper.items(payload),
       payments_data: PlaceOrderHelper.payments(payload)
     }
-  }
+  end
 
   describe 'integration with delivery center api' do
     around(:each) do |example|

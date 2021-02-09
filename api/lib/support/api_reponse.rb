@@ -11,8 +11,8 @@ module Support
       JSON.parse(@r.body.read).symbolize_keys!
     end
 
-    def success(msg)
-      @r.halt 200, { message: msg }
+    def success(_body)
+      @r.halt 200
     end
 
     def created(msg)
@@ -54,7 +54,7 @@ module Support
     def locked
       @r.halt 423, { message: 'Locked' }
     end
-    
+
     def token
       @r.headers['token']
     end

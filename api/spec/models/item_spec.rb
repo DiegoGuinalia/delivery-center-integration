@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Item, type: :model do
-
   context 'includes' do
     it { is_expected.to be_mongoid_document }
     it { is_expected.to have_timestamps }

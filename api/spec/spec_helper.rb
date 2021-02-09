@@ -10,8 +10,16 @@ require 'database_cleaner-mongoid'
 # Load support
 Dir["#{Dir.pwd}/spec/support/**/*.rb"].sort.each { |file| require file }
 
+module RequestHelper
+  include Rack::Test::Methods
+
+  def app
+    App
+  end
+end
+
 RSpec.configure do |config|
-  config.include Rack::Test::Methods
+  config.include RequestHelper, type: :request
 
   config.include Mongoid::Matchers
 
@@ -32,6 +40,6 @@ RSpec.configure do |config|
 end
 
 VCR.configure do |config|
-  config.cassette_library_dir = "spec/vcr_cassettes"
+  config.cassette_library_dir = 'spec/vcr_cassettes'
   config.hook_into :webmock
 end

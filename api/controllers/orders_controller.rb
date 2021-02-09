@@ -9,10 +9,10 @@ module Controllers
 
         if result.success?
           body = { result: 'success' }
-          _request.success body
+          _request.success(body)
         else
-          body = { result: 'failed' }
-          _request.failure body
+          body = { result: 'failed', error: result.error }
+          _request.unprocessable_entity(body)
         end
       end
     end

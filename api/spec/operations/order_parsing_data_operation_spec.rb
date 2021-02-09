@@ -41,7 +41,8 @@ RSpec.describe OrderParsingDataOperation do
   end
 
   def order
-    order_data = payload.slice(:id, :store_id, :total_amount, :total_shipping, :total_amount_with_shipping, :date_created)
+    order_data = payload.slice(:id, :store_id, :total_amount, :total_shipping, :total_amount_with_shipping,
+                               :date_created)
     {
       external_code: order_data[:id],
       store_id: order_data[:store_id],
@@ -63,7 +64,7 @@ RSpec.describe OrderParsingDataOperation do
       street: address_data[:street_name],
       complement: address_data[:comment],
       latitude: address_data[:latitude],
-      longitude:  address_data[:longitude],
+      longitude: address_data[:longitude],
       postal_code: address_data[:zip_code],
       number: address_data[:street_number]
     }
