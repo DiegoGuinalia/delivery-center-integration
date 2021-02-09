@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PlaceOrder
   include Interactor::Organizer
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateOrderOperation
   include Interactor
 

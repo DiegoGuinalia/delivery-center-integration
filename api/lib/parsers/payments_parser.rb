@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PaymentsParser
   def initialize(params)
     @payments = params[:payments]

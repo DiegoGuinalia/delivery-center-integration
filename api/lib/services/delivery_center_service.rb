@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DeliveryCenterService
   def initialize
     @uri = 'https://delivery-center-recruitment-ap.herokuapp.com/'

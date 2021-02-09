@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddressParser
   STATE_OPTIONS = {
     "Acre": 'AC',

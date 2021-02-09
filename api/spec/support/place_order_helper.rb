@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PlaceOrderHelper
   def self.customer(payload)
     payload.slice(:customer)[:customer]
